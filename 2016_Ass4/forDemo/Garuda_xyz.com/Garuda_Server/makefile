@@ -1,5 +1,5 @@
 run: garuda_server
-	./garuda_server xyz.com 10.42.0.22
+	./garuda_server xyz.com 127.0.0.1
 
 garuda_server: garuda_server.cpp packet email SMTP_server POP_server
 	g++ -o garuda_server garuda_server.cpp

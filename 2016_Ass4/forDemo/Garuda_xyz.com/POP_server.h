@@ -131,7 +131,7 @@ private:
 		terminateConnection();
 	}
 
-	int validate(char usr[40],char pwd[10])
+	int validate(char usr[10],char pwd[10])
 	{
 		// hardcoded but can also be generalized using registration / signup
 		/*
@@ -139,33 +139,30 @@ private:
 		four   users   of   abc.com:   Alice,   Arun,   Ananya,   and   Alex   and   four   users   of   xyz.com:   Bob,   Bilal,  
 		Alex   and   Bernee.
 		*/
-		char temp_user_domain[40];
-		strcpy(temp_user_domain,usr);
-		char* buf = strtok(temp_user_domain," @");
-		strcpy(_user_,buf);
+		strcpy(_user_,usr);
 
 		if(strcmp(domain,"abc.com")==0)
 		{
-			if(strcmp(usr,"Alice@abc.com")==0 && strcmp(pwd,"alicepwd")==0)
+			if(strcmp(usr,"Alice")==0 && strcmp(pwd,"alicepwd")==0)
 				return 1;
-			else if(strcmp(usr,"Arun@abc.com")==0 && strcmp(pwd,"arunpwd")==0)
+			else if(strcmp(usr,"Arun")==0 && strcmp(pwd,"arunpwd")==0)
 				return 1;
-			else if(strcmp(usr,"Ananya@abc.com")==0 && strcmp(pwd,"ananyapwd")==0)
+			else if(strcmp(usr,"Ananya")==0 && strcmp(pwd,"ananyapwd")==0)
 				return 1;
-			else if(strcmp(usr,"Alex@abc.com")==0 && strcmp(pwd,"alexpwd")==0)
+			else if(strcmp(usr,"Alex")==0 && strcmp(pwd,"alexpwd")==0)
 				return 1;
 			else return 0;
 		}
 		else
 			if(strcmp(domain,"xyz.com")==0)
 			{
-				if(strcmp(usr,"Bob@xyz.com")==0 && strcmp(pwd,"bobpwd")==0)
+				if(strcmp(usr,"Bob")==0 && strcmp(pwd,"bobpwd")==0)
 					return 1;
-				else if(strcmp(usr,"Bilal@xyz.com")==0 && strcmp(pwd,"bilalpwd")==0)
+				else if(strcmp(usr,"Bilal")==0 && strcmp(pwd,"bilalpwd")==0)
 					return 1;
-				else if(strcmp(usr,"Bernee@xyz.com")==0 && strcmp(pwd,"berneepwd")==0)
+				else if(strcmp(usr,"Bernee")==0 && strcmp(pwd,"berneepwd")==0)
 					return 1;
-				else if(strcmp(usr,"Alex@xyz.com")==0 && strcmp(pwd,"alexpwd")==0)
+				else if(strcmp(usr,"Alex")==0 && strcmp(pwd,"alexpwd")==0)
 					return 1;
 				else return 0;
 			}
@@ -178,7 +175,7 @@ private:
 		int write_count,read_count;
 		struct packet pkt;
 
-		char usr[40],pwd[10]; // Plz NOTE : a change in usr meaning : in POP it stores the whole usr@domain.com
+		char usr[10],pwd[10];
 
 		read_count=read(newsockfd,(char*)&pkt,sizeof(pkt));
 		if(read_count<0) error("Error in reading VRFY_USER from Client !");

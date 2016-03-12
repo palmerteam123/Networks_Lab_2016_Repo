@@ -1,4 +1,4 @@
-
+/******************************** input both ips in makefile **************************************/
 #include "../SMTP_client.h"
 #include "../POP_client.h"
 
@@ -9,13 +9,6 @@ using namespace std;
 
 #define SECOND_SERVER_PORT__SMTP  8000
 #define SECOND_SERVER_PORT__POP   9000
-
-/******************************** input both ips in makefile **************************************/
-/******************************** input both ips in makefile **************************************/
-/******************************** input both ips in makefile **************************************/
-/******************************** input both ips in makefile **************************************/
-/******************************** input both ips in makefile **************************************/
-/******************************** input both ips in makefile **************************************/
 
 
 int main(int argc,char* argv[])
@@ -31,9 +24,9 @@ int main(int argc,char* argv[])
      }
      else if (argc == 4) 
      {
-      	strcpy(serverIP,argv[1]);
+	strcpy(serverIP,argv[1]);
         strcpy(server_domain_name,argv[2]);
-	     choice = atoi(argv[3]);
+	choice = atoi(argv[3]);
      }
      else
      {
@@ -45,7 +38,7 @@ int main(int argc,char* argv[])
      {
 	     while(choice<1 || choice>3) 
 		  {
-		       cout<<"\n Please enter option 1 / 2 / 3 : \n1. Send New Email\n2. Retrieve Inbox Emails\n3. Retreive mails from both domains\n\n";
+		       cout<<"\n Please enter option 1 / 2 : \n1. Send New Email\n2. Retrieve Inbox Emails\n3. Retreive mails from both domains\n\n";
 		   
 		       choice=getch();
 		       choice-='0';
@@ -86,14 +79,15 @@ int main(int argc,char* argv[])
 	         	
 	         	 	break;
 	          }
-      		  case 3:
-      		  {
-      			
-      		  	system("xterm -e ./garuda_client 127.0.0.1 xyz.com 2 &");
-      		  	system("xterm -e ./garuda_client 10.42.0.1 abc.com 2 &");
-              break;
-      		  }
-            
+		  case 3:
+		  {
+			
+			system("xterm -e ./garuda_client 127.0.0.1 abc.com 2 &");
+			system("xterm -e ./garuda_client 10.42.0.1 xyz.com 2 &");
+		  }
+
+	          break;
+	          
 	          default:printf("Error ! No valid option \n");
      	}
      

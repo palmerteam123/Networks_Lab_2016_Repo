@@ -33,6 +33,8 @@ class POP_Client
 private:
 
 	char sender_domain[40];
+	char sender[10];
+	char domain[20]; // to be used in HELO
 
 	int sockfd,portno;
 	char* serverIP;
@@ -113,11 +115,11 @@ public:
 			return -1;
 		}
 
-		/*char* buf = strtok(sender_domain," @\n");
+		char* buf = strtok(sender_domain," @\n");
 		
 		strcpy(sender,buf);
 		buf = strtok(NULL," @\n");
-		strcpy(domain,buf);*/
+		strcpy(domain,buf);
 
 		char pwd[10];
 
@@ -140,7 +142,7 @@ public:
 
 		// Now, we have sender[10] and pwd[10]
 
-		pkt = packet(packet::VRFY_USER,sender_domain);
+		pkt = packet(packet::VRFY_USER,sender);
 		write_count = write(sockfd,(char*)&pkt,sizeof(pkt));
 		if(write_count<0) error("Error in writing VRFY_USER to Server !");
 		else cout << "Sent VRFY_USER username to Server" << endl;
